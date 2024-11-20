@@ -1,0 +1,59 @@
+<div class="container" style="min-height: 35vh;">
+
+  <div class="row">
+    <div class="col">
+      <div class="input-group mb-3">
+        <span class="input-group-text border-0" style="color:rgb(255, 255, 255) ;background-color: rgba(0, 0, 0, 0);"
+          id="search-addon"><i class="fas fa-search"></i></span>
+        <input style="max-width: 25vh; min-width: 15vh;" type="search" #inpBookingId type="search" class="bg-dark text-light form-control my-placeholder rounded"
+          placeholder="Search By Booking ID" (keyup.enter)="performSearch(inpBookingId.value)" [(ngModel)]="searchQuery"
+          aria-label="Search" aria-describedby="search-addon" />
+      </div>
+    </div>
+    <div class="col" style="display: flex;justify-content: end;height: 30%;">
+      <button class="btn btn-primary" (click)="btnReloadOnAction()">Reload</button>
+    </div>
+  </div>
+  <div class="table-responsive" style="overflow-x: auto; white-space: nowrap;">
+    <table class="table table-hover table-dark text-white align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>Billing ID</th>
+          <th>Booking ID</th>
+          <th>Check Out Date</th>
+          <th>Total Bill</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let billing of billings">
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="fw-bold mb-1">{{ billing?.billingId }}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="badge badge-success rounded-pill d-inline">{{ billing?.bookingId }}</span>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ billing?.date }}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ billing?.amount }}</p>
+          </td>
+          <td>
+            <div class="badge rounded-pill d-inline" [ngClass]="{
+                'bg-success': billing?.paymentStatus == 'Paid',
+                'bg-danger': billing?.paymentStatus == 'Not Paid'
+              }">
+              {{ billing?.paymentStatus }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+.editIcon:hover{
+    color: rgb(197, 197, 197);
+}
+.editIcon:active{
+    color: rgb(159, 159, 159);
+}
+.editIcon{
+    text-align: center;
+}
+.search-room::placeholder{
+    color:white
+}

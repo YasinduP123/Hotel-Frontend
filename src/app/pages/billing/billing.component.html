@@ -1,0 +1,139 @@
+<router-outlet></router-outlet>
+<div data-aos="zoom-in" style="min-height: 35vh;">
+<div class="container pb-5 bg-dark p-5 mt-3 mb-5 rounded-5" style=" box-shadow: 0px 0px 50px rgb(0, 0, 0);">
+  <div class="py-5 text-center">
+<div class="row">
+  <div class="col-8"></div>
+  <div class="col-4">
+    <button class="w-50 btn text-light btn-lg" style="background-color: rgb(255, 0, 0)" type="submit" (click)="btnViewBillingStory()" >Billing History</button>
+  </div>
+</div>
+    <div style="padding: 0px; margin-top: -40px;">
+      <img class="mb-4"
+        src="https://png.pngtree.com/png-vector/20220915/ourmid/pngtree-opulent-hotel-branding-logo-in-luxurious-golden-hues-on-black-background-for-business-appeal-vector-png-image_33778604.jpg"
+        alt="" width="202" height="157" style="border-radius: 50%; margin-top: 10vh;">
+    </div>
+    <h2 class="text-white">Checkout form</h2>
+  </div>
+
+  <div class="row g-5 ">
+    <div class="col-md-5 col-lg-4 order-md-last">
+      <div style="margin: 0 auto;">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Time Duration</span>
+          <span class="badge bg-primary rounded-pill">{{duration}}</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item lh-sm">
+            <!-- <span class="text-body-secondary">Rs.{{poolBill}}</span> -->
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"><h6 class="my-0">Pool Bill</h6></label>
+              <input type="number" value="" class="form-control" id="exampleInputEmail1" [(ngModel)]="poolBill" aria-describedby="emailHelp">
+            </div>  
+          </li>
+          <li class="list-group-item lh-sm">
+            <!-- <span class="text-body-secondary">Rs.{{poolBill}}</span> -->
+            <div class="mb-3">  
+              <label for="exampleInputEmail2" class="form-label"><h6 class="my-0">Breakfast Bill</h6></label>
+              <input type="number" class="form-control" id="exampleInputEmail1" [(ngModel)]="breakFastBill" aria-describedby="emailHelp">
+            </div>  
+          </li>
+          <li class="list-group-item lh-sm">
+            <!-- <span class="text-body-secondary">Rs.{{poolBill}}</span> -->
+            <div class="mb-3">
+              <label for="exampleInputEmail3" class="form-label"><h6 class="my-0">Lunch Bill</h6></label>
+              <input type="number" class="form-control" id="exampleInputEmail1" [(ngModel)]="lunchBill" aria-describedby="emailHelp">
+            </div>  
+          </li>
+          <li class="list-group-item lh-sm">
+            <!-- <span class="text-body-secondary">Rs.{{poolBill}}</span> -->
+            <div class="mb-3">
+              <label for="exampleInputEmail4" class="form-label"><h6 class="my-0">Dinner Bill</h6></label>
+              <input type="number" class="form-control" id="exampleInputEmail1" [(ngModel)]="dinnerBill" aria-describedby="emailHelp">
+            </div>  
+          </li>
+          <li class="list-group-item lh-sm">
+            <!-- <span class="text-body-secondary">Rs.{{poolBill}}</span> -->
+            <div class="mb-3">
+              <label for="exampleInputEmail5" class="form-label"><h6 class="my-0">Others</h6></label>
+              <input type="number" class="form-control" id="exampleInputEmail1" [(ngModel)]="others" aria-describedby="emailHelp">
+            </div>  
+          </li>
+          <li class="list-group-item lh-sm">
+            <div class="mb-3">
+              <p>Select Status</p>
+              <select class="form-select" [(ngModel)]="selectdStatus" (change)="onSelected()">
+                <option value="Paid">Paid</option>
+                <option value="Not Paid">Not Paid</option>
+              </select>
+            </div>  
+          </li>
+          
+          <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+            <div class="text-success">
+              <h6 class="my-0">Discount</h6>
+            </div>
+            <span class="text-success">−Rs.{{discount}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between" style="height: 10vh;align-items: center;">
+            <strong>Total (LKR)</strong>
+            <strong>{{totalBill}}</strong>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <button class="w-50 btn btn-primary btn-lg" type="submit" [disabled]="isDisabled" (click)="btnCheckOut()">Conform Bill</button>
+      </div>
+    </div>
+
+
+
+    <div class="col">
+      <h4 class="mb-3 text-white">Billing details</h4>
+      <br>
+      <div class="needs-validation" novalidate>
+        <div class="row g-3" >
+
+          <div class="col-5 mb-3">
+            <label for="bookingID" class="form-label text-white">Booking ID</label>
+            <input type="text" class="form-control" #bookingId (keyup.enter)="getBookingIdVal(bookingId.value)" [(ngModel)]="searchQuery"
+              placeholder="Booking ID" value={{billingInfo?.bookingId}} required>
+          </div>
+
+          <div class="col-sm-6 mb-3">
+            <label for="nic" class="form-label text-white">NIC</label>
+            <input type="text" class="form-control" id="nic" placeholder="NIC" value={{billingInfo?.customer?.nic}} required>
+          </div>
+
+          <div class="col-sm-6 mb-3">
+            <label for="name" class="form-label text-white">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" value={{billingInfo?.customer?.name}} required>
+          </div>
+
+          <div class="col-6 mb-3">
+            <label for="checkInDate" class="form-label text-white">Check In Date<span
+                class="text-body-secondary">(Optional)</span></label>
+            <input type="date" class="form-control" id="checkInDate" placeholder="Check In Date"
+              value={{billingInfo?.checkInDate}}>
+          </div>
+
+          <div class="col-6 mb-3">
+            <label for="checkOutDate" class="form-label text-white">Check Out Date</label>
+            <input type="date" class="form-control" id="checkOutDate" value={{billingInfo?.checkOutDate}}
+              placeholder="Check Out Date" required>
+          </div>
+
+        </div>
+
+        <hr class="my-4">
+        <div class="row">
+          <div class="col">
+            <button class="w-50 btn btn-primary btn-lg" type="submit" (click)="btnContinueCheckOut()">Continue to checkout</button>
+            <button class="w-50 btn btn-warning btn-lg" type="submit" (click)="clearForm()" >Clear Form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

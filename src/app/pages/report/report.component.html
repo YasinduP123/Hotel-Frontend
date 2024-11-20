@@ -1,0 +1,34 @@
+<div class="container text-light" style="min-height: 35vh;" >
+    <div class="row">
+
+        <div class="col">
+            <h1 style="text-align: center;">Room Bookings</h1>
+            <br><br>
+            <div style="margin: 0 auto ;display: block; height: 60vh; width: 60vh;">
+                <canvas baseChart
+                [data]="doughnutChartData"
+                [type]="doughnutChartType"
+                [options]="doughnutChartOptions">
+                </canvas>
+              </div>
+              <br><br><br>
+        </div>
+        <br><br><br>
+        <div class="col">
+            <h1 style="text-align: center;" >Pending Bookings</h1>
+            <br><br>
+            <div style="display: block; " >
+                <canvas style="height: 500px" 
+                        baseChart
+                        [data]="barChartData"
+                        [type]="barChartType"
+                        [options]="barChartOptions">
+                </canvas>
+              </div>
+              
+    
+        </div>
+    </div>
+
+
+</div>

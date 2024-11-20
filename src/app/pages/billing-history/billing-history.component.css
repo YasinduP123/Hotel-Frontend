@@ -1,0 +1,16 @@
+.my-placeholder::placeholder{
+    color: #ffffff;
+}
+html{
+    scroll-behavior: smooth;
+}
+.paid-status {
+    background-color: green;
+    color: white;
+}
+  
+.unpaid-status {
+    background-color: rgb(197, 30, 30);
+    color: white;
+}
+  

@@ -1,0 +1,208 @@
+  <div class="container" style="min-height: 35vh;">
+    <div class="row">
+      <div class="col">
+        
+      <div data-aos="zoom-in">
+        <div class="bg-dark p-5 rounded-3 m-5">
+          <div class="input-group mb-3" style="max-width: 40vh;">
+            <span class="input-group-text border-0" style="color:rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0);" id="search-addon">
+              <i class="fas fa-search"></i>
+            </span>
+            <input
+              type="search"
+              #inpRoomId
+              class="form-control search-customer rounded bg-dark text-light"
+              placeholder="Search By NIC"
+              (keyup.enter)="performSearch(inpRoomId.value)"
+              [(ngModel)]="searchQuery"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+          </div>
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Manage Customer</h1>
+          </div>
+          <div class="modal-body">
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="name" class="col-form-label">Name</label>
+                <input type="text" class="form-control bg-dark text-light" [(ngModel)]="customer.name" id="name">
+              </div>
+              <div class="col-6">
+                <label for="nic" class="col-form-label">NIC</label>
+                <input type="text" class="form-control bg-dark text-light" [(ngModel)]="customer.nic" id="nic">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="address" class="col-form-label">Address</label>
+                <input type="text" class="form-control bg-dark text-light" [(ngModel)]="customer.address" id="address">
+              </div>
+              <div class="col-6">
+                <label for="contactNumber" class="col-form-label">Contact Number</label>
+                <input type="text" class="form-control bg-dark text-light" [(ngModel)]="customer.contactNumber" id="contactNumber">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="email" class="col-form-label">Email</label>
+                <input type="text" class="form-control bg-dark text-light" [(ngModel)]="customer.email" id="email">
+              </div>
+              <div class="col-6">
+                <label for="dob" class="col-form-label">DOB</label>
+                <input type="date" class="form-control bg-dark text-light" [(ngModel)]="customer.dob" id="dob">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <li class="list-group-item lh-sm">
+                  <div class="mb-3">
+                    <p>Select Gender</p>
+                    <select class="form-select bg-dark text-light" [(ngModel)]="customer.gender">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>  
+                </li>
+              </div>
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="formFileMultiple" class="form-label">Upload Profile Picture </label>
+                  <input class="form-control bg-dark text-light" type="file" (change)="onFileChange($event)" id="formFileMultiple" multiple>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success w-25" (click)="addCustomer(customer)">Save</button>
+            <button type="button" class="btn btn-warning w-25" (click)="loadCustomerInfo()">Reload</button>
+          </div>
+        </div>
+      </div>
+
+      <div data-aos="fade-left">
+      <div class="col table-responsive" style="overflow-x: auto; white-space: nowrap;">
+        <table class=" table-hover table table-dark align-middle mb-0 bg-dark">
+          <thead class="bg-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">NIC</th>
+              <th scope="col">Address</th>
+              <th scope="col">Number</th>
+              <th scope="col">Email</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Gender</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor=" let customer of customers ">
+              <td>
+                <div class="d-flex align-items-center">
+                  <img
+                      src={{customer?.image}}
+                      alt=""
+                      style="width: 45px; height: 45px"
+                      class="rounded-circle"
+                      />
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1" >{{customer?.id}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p class="badge badge-success rounded-pill d-inline" >{{customer?.name}}</p>
+              </td>
+              <td>
+                <span class="badge badge-success rounded-pill d-inline" >{{customer?.nic}}</span>
+              </td>
+              <td>
+                <span class="badge badge-success rounded-pill d-inline" >{{customer?.address}}</span>
+              </td>
+              <td>
+                <span class="badge badge-success rounded-pill d-inline" >{{customer?.contactNumber}}</span>
+              </td>
+              <td>
+                <span class="badge badge-success rounded-pill d-inline" >{{customer?.email}}</span>
+              </td>
+              <td>
+                <span class="badge badge-success rounded-pill d-inline" >{{customer?.dob}}</span>
+              </td>
+              <td>
+                <span class="badge badge-success rounded-pill d-inline" >{{customer?.gender}}</span>
+              </td>
+              <td class="text-lg-center">
+                <button type="button" class="btn btn-rounded text-white" data-bs-whatever="@mdo" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="btnEditOnAction(customer)" title="edit">
+                  <i class="bi bi-pencil-square text-white"></i>
+                </button>
+                <button type="button" class="btn btn-rounded"  (click)="btnDeleteOnAction(customer.id)" title="Delete">
+                  <i class="bi bi-trash text-danger"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog ">
+            <div class="modal-content bg-dark">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Customer</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Customer ID</label>
+                    <input type="text" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.id" id="recipient-name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Name</label>
+                    <input type="text" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.name" id="recipient-name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">NIC</label>
+                    <input type="text" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.nic" id="recipient-name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Address</label>
+                    <input type="text" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.address" id="recipient-name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Contact NO</label>
+                    <input type="text" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.contactNumber" id="recipient-name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Email</label>
+                    <input type="text" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.email" id="recipient-name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">DOB</label>
+                    <input type="date" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.dob" id="recipient-name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Gender</label>
+                    <input type="text" class="form-control bg-dark" style="color: white;" [(ngModel)]="editCustomer.gender" id="recipient-name">
+                  </div>
+                  <div class="col-6">
+                    <div class="mb-3">
+                      <label for="formFileMultiple" class="form-label">Upload Profile Picture </label>
+                      <input class="form-control bg-dark text-light" type="file" [(ngModel)]="editCustomer.image" (change)="onFileChange($event)" id="formFileMultiple" multiple>
+                      <button type="button" class="btn btn-danger" (click)="imageRemoveOnAction(editCustomer.image)">Remove Image</button>
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="updateCustomerOnAction(editCustomer)">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  </div>
+

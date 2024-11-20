@@ -1,0 +1,8 @@
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #dc3545; /* Bootstrap danger color */
+}
+
+.invalid-feedback {
+  display: block;
+}

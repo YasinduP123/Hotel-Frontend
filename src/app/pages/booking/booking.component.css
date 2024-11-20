@@ -1,0 +1,103 @@
+/* MDB Primary */
+.btn-outline-primary:hover {
+    background-color: rgba(33, 150, 243, 0.6); /* Material Blue with transparency */
+    border: 2px solid #0b5ed7;
+    color: #0b5ed7;
+    font-weight: 600;
+}
+.btn-outline-primary {
+    border: 2px solid #2196f3; /* Primary blue */
+    color: #2196f3;
+    font-weight: 600;
+}
+
+/* MDB Secondary */
+.btn-outline-secondary:hover {
+    background-color: rgba(48, 48, 48, 0.6); /* Gray with transparency */
+    border: 2px solid #99a0a6;
+    color: #99a0a6;
+    font-weight: 600;
+}
+.btn-outline-secondary {
+    border: 2px solid #6e7377; /* Standard gray */
+    color: #6e7377;
+    font-weight: 600;
+}
+
+/* MDB Success */
+.btn-outline-success:hover {
+    background-color: rgba(76, 175, 80, 0.6); /* Material Green with transparency */
+    border: 2px solid #00e108; /* Updated border color */
+    color: #00e108; /* Updated text color */
+    font-weight: 600;
+}
+.btn-outline-success {
+    border: 2px solid #4caf50; /* Primary green */
+    color: #4caf50; /* Primary green text */
+    font-weight: 600;
+}
+
+/* MDB Danger */
+.btn-outline-danger:hover {
+    background-color: rgba(244, 67, 54, 0.6); /* Material Red with transparency */
+    border: 2px solid #b02a37;
+    color: #b02a37;
+    font-weight: 600;
+}
+.btn-outline-danger {
+    border: 2px solid #f44336; /* Primary red */
+    color: #f44336;
+    font-weight: 600;
+}
+
+/* MDB Warning */
+.btn-outline-warning:hover {
+    background-color: rgba(255, 193, 7, 0.6); /* Material Amber with transparency */
+    border: 2px solid #cc9a06;
+    color: #cc9a06;
+    font-weight: 600;
+}
+.btn-outline-warning {
+    border: 2px solid #ffc107; /* Amber */
+    color: #ffc107;
+    font-weight: 600;
+}
+
+/* MDB Info */
+.btn-outline-info:hover {
+    background-color: rgba(0, 188, 212, 0.6); /* Material Cyan with transparency */
+    border: 2px solid #0bbac6;
+    color: #0bbac6;
+    font-weight: 600;
+}
+.btn-outline-info {
+    border: 2px solid #00bcd4; /* Cyan */
+    color: #00bcd4;
+    font-weight: 600;
+}
+
+/* MDB Light */
+.btn-outline-light:hover {
+    background-color: rgba(248, 249, 250, 0.6); /* Material Light with transparency */
+    border: 2px solid #ced4da;
+    color: #ced4da;
+    font-weight: 600;
+}
+.btn-outline-light {
+    border: 2px solid #f8f9fa; /* Light gray */
+    color: #adb5bd; /* Slightly darker gray */
+    font-weight: 600;
+}
+
+/* MDB Dark */
+.btn-outline-dark:hover {
+    background-color: rgba(33, 33, 33, 0.6); /* Material Dark with transparency */
+    border: 2px solid #1b1f23;
+    color: #1b1f23;
+    font-weight: 600;
+}
+.btn-outline-dark {
+    border: 2px solid #212121; /* Dark gray */
+    color: #212121;
+    font-weight: 600;
+}
