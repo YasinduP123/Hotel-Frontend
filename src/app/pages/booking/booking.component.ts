@@ -42,10 +42,17 @@ export class BookingComponent implements OnInit {
     }
   };
 inpRoomTypeVal: any;
+currentTarget: any;
   
   ngOnInit(): void {
     this.loadBookingInfo();
     this.loadRoomInfo();
+  }
+
+  loadTargetBar(bookingCount: number): void {
+    this.currentTarget = ((bookingCount / this.roomCount) * 100).toFixed(0) + "%";
+    console.log("currentTarget: " + this.currentTarget);
+    
   }
 
   onSelected() {
@@ -382,7 +389,7 @@ inpRoomTypeVal: any;
         this.remRooms = this.roomCount - this.bookingCount
         console.log("booking ",this.bookingCount);
         console.log("room ",this.roomCount);
-        
+        this.loadTargetBar(this.bookingCount)
 
         if (this.remRooms <= 0) {
           this.remRooms = 0;
